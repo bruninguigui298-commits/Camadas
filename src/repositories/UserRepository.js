@@ -7,15 +7,15 @@ const UserRepository = {
         return rows;
     },
 
-    SelectionPorId: async (userid) => {
+    SelectionPorId: async (userId) => {
         const sql = "SELECT * FROM users WHERE id = ?;";
-        const [rows] = await pool.execute(sql, [userid]);
+        const [rows] = await pool.execute(sql, [userId]);
         return rows;
     },
 
-    delete: async (userid) => {
+    delete: async (userId) => {
         const sql = "DELETE FROM users WHERE id = ?;";
-        const [rows] = await pool.execute(sql, [userid]);
+        const [rows] = await pool.execute(sql, [userId]);
         return rows;
     },
     create: async (name, email, password) => {
@@ -26,7 +26,7 @@ const UserRepository = {
     },
     update: async (name, email, password) => {
         const sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?;";
-        const [rows] = await pool.execute(sql, [name, email, password]);
+        const [rows] = await pool.execute(sql, [name, email, password, userId]);
         return rows;
     },
 
