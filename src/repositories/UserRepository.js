@@ -12,6 +12,7 @@ const UserRepository = {
         const [rows] = await pool.execute(sql, [userId]);
         return rows;
     },
+    
 
     delete: async (userId) => {
         const sql = "DELETE FROM users WHERE id = ?;";
