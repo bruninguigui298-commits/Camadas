@@ -7,7 +7,7 @@ const userController = {
             const result = await userService.recoverUser();
 
             return res.status(200).json({
-                message: "Usiarios recuperados com sucesso!",
+                message: "Users successfully recovered!",
                 data: result
             });
         }
@@ -22,7 +22,9 @@ const userController = {
         try {
             const { name, email, password } = req.body;
 
-            const user = new User(name, email, password, null);
+            const hashedPassword =  await userService.hashPassword(password);
+
+            const user = new User(name, email, hashedPassword, null);
 
             const result = await userService.createUser(user);
             return res.status(201).json({
@@ -56,6 +58,16 @@ const userController = {
                 data: error.message
             });
         }
+    }, 
+    update: async (req, res) => {
+        const {name, email, password } = req.body;
+        const user = new User(name, email, password, id);
+        const result = await userService.updadeUser(user);
+        return res.status(200).json({
+            message: "User updated.",
+            result
+        });
+
     }
 }
 

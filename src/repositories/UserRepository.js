@@ -12,6 +12,11 @@ const UserRepository = {
         const [rows] = await pool.execute(sql, [userId]);
         return rows;
     },
+     selectionByEmail: async (email) => {
+        const sql = "SELECT * FROM users WHERE email = ?;";
+        const [rows] = await pool.execute(sql, [email]);
+        return rows;
+    },
     
 
     delete: async (userId) => {
