@@ -10,3 +10,5 @@ CREATE TABLE users(
     email VARCHAR(75) NOT NULL UNIQUE,
     password VARCHAR(1000) NOT NULL
 );
+
+ALTER TABLE users ADD COLUMN role ENUM ('user', 'admin') NOT NULL DEFAULT 'user';

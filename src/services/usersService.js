@@ -22,7 +22,7 @@ const userService = {
     },
 
     createUser: async (user) => {
-        const result = await UserRepository.create(user.name, user.email, user.password);
+        const result = await UserRepository.create(user.name, user.email, user.password, user.role);
         return result;
     },
 
